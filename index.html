@@ -370,28 +370,40 @@ textarea.dark-input{resize:none;min-height:88px;line-height:1.6}
   .ft-grid{grid-template-columns:1fr 1fr;gap:36px}
 }
 @media(max-width:768px){
-  nav{padding:13px 18px}
-  nav.scrolled{padding:11px 18px}
-  .nav-links{display:none}
-  .burger{display:flex}
+  /* NAV — desktop-style, links scrollable */
+  nav{padding:10px 18px;flex-wrap:wrap;background:rgba(250,246,240,.97);backdrop-filter:blur(20px);box-shadow:0 2px 12px rgba(44,36,22,.08)}
+  nav.scrolled{padding:10px 18px}
+  .nav-logo{flex-shrink:0}
+  .nav-links{display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:10px;width:100%;white-space:nowrap;padding:6px 0 2px;border-top:1px solid rgba(201,169,110,.15);margin-top:6px}
+  .nav-links::-webkit-scrollbar{display:none}
+  .nav-links a{font-size:10px;letter-spacing:.8px}
+  .nav-cta{padding:6px 12px;font-size:10px}
+  .burger{display:none!important}
+  /* HERO — show photo */
   .container{padding:0 18px}
   section{padding:60px 0}
-  .hero-content{padding:88px 18px 48px}
+  .hero-content{padding:108px 18px 48px;gap:28px}
+  .hero-visual{display:block}
+  .hero-card{height:230px;border-radius:18px}
+  .float-card{display:none}
   .hero-title{font-size:34px;line-height:1.18}
   .hero-badge{font-size:10px;padding:7px 14px}
   .hero-sub{font-size:14px;line-height:1.75;margin-bottom:28px}
   .hero-btns{flex-direction:column;gap:10px}
   .btn-primary,.btn-outline{width:100%;justify-content:center;padding:15px 20px;font-size:13px}
-  .hero-stats{gap:16px;margin-top:32px;padding-top:24px;flex-wrap:wrap}
-  .stat-num{font-size:26px}
+  .hero-stats{gap:14px;margin-top:26px;padding-top:20px;flex-wrap:wrap}
+  .stat-num{font-size:24px}
   .stat-lbl{font-size:10px}
+  /* SECTIONS */
   .sec-title{font-size:28px}
   .sec-sub{font-size:14px}
+  /* QUIZ */
   .q-text{font-size:22px;margin-bottom:22px}
   .quiz-opts{grid-template-columns:1fr}
   .quiz-opt{padding:18px 16px}
   .res-name{font-size:30px}
   .res-desc{font-size:14px}
+  /* ABOUT */
   .about-photo-wrap img{height:260px}
   .about-stats-row{gap:8px}
   .about-stat{padding:12px 6px}
@@ -401,8 +413,10 @@ textarea.dark-input{resize:none;min-height:88px;line-height:1.6}
   .about-why-icon{width:36px;height:36px;min-width:36px;font-size:15px;border-radius:10px}
   .about-why-item strong{font-size:13px}
   .about-why-item span{font-size:12px}
+  /* TEAM / SERVICES */
   .team-grid,.srv-grid{grid-template-columns:1fr}
   .srv-img{height:180px}
+  /* CALC / GIFT / PRICING */
   .calc-widget{padding:24px 18px}
   .calc-title{font-size:20px}
   .calc-row,.f2col,.gift-row{grid-template-columns:1fr}
@@ -413,26 +427,31 @@ textarea.dark-input{resize:none;min-height:88px;line-height:1.6}
   .p-card{padding:24px 18px}
   .p-amount{font-size:38px}
   .pricing-grid{grid-template-columns:1fr}
+  /* LEAD MAGNET */
   .lm-title{font-size:28px}
   .lm-desc{font-size:14px}
+  /* BOOKING */
   .booking-grid{grid-template-columns:1fr}
   .booking-form-card{padding:22px 16px}
   .form-title{font-size:24px}
   .time-grid{grid-template-columns:repeat(3,1fr)}
+  /* FOOTER */
   .ft-grid{grid-template-columns:1fr;gap:24px}
   .ft-bottom{flex-direction:column;gap:8px;text-align:center}
+  /* MODALS / TOAST */
   .modal{padding:28px 20px;width:94%}
   .m-title{font-size:22px}
-  .ask-float{bottom:90px;left:18px;font-size:12px;padding:11px 16px}
   #toast{bottom:auto;top:18px;right:18px;left:18px;max-width:none}
+  /* FLOAT BUTTONS — gold, same level bottom:22px */
+  .ask-float{bottom:22px;left:22px;background:linear-gradient(135deg,var(--gold),var(--gold-dark));border:none;color:var(--white);width:58px;height:58px;border-radius:50%;padding:0;font-size:22px;gap:0;box-shadow:0 8px 28px rgba(201,169,110,.5)}
+  .ask-float:hover{transform:scale(1.08);background:linear-gradient(135deg,var(--gold),var(--gold-dark))}
+  .ask-txt{display:none}
   .mobile-call-btn{display:flex;align-items:center;justify-content:center;position:fixed;bottom:22px;right:22px;width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:var(--white);text-decoration:none;z-index:9997;animation:call-pulse 2s ease-out infinite}
   .mobile-call-btn svg{animation:call-ring 2s ease-in-out infinite;width:26px;height:26px}
 }
 @media(max-width:400px){
   .hero-title{font-size:28px}
   .sec-title{font-size:24px}
-  .about-stats-row{grid-template-columns:repeat(3,1fr)}
-  .mob-nav a{font-size:24px}
 }
 </style>
 </head>
@@ -1161,7 +1180,7 @@ textarea.dark-input{resize:none;min-height:88px;line-height:1.6}
 </a>
 
 <!-- FLOAT ASK -->
-<button class="ask-float" onclick="openAskModal()">💬 Задати питання</button>
+<button class="ask-float" onclick="openAskModal()">💬 <span class="ask-txt">Задати питання</span></button>
 
 <!-- MODAL: Ask -->
 <div class="overlay" id="askOverlay">
