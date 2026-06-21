@@ -320,8 +320,29 @@ textarea.dark-input{resize:none;min-height:88px;line-height:1.6}
 .lm-perks{display:grid;gap:10px;margin-top:18px}
 .lm-perk{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:13px 18px;font-size:13px;font-weight:500;color:rgba(255,255,255,.65);display:flex;align-items:center;gap:10px}
 
+/* ── ABOUT ── */
+.about-section{background:var(--cream)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.about-photo-wrap{border-radius:24px;overflow:hidden;position:relative;box-shadow:var(--shadow);margin-bottom:20px}
+.about-photo-wrap img{width:100%;height:420px;object-fit:cover;display:block}
+.about-photo-badge{position:absolute;bottom:18px;left:18px;background:rgba(250,246,240,.95);padding:9px 18px;border-radius:30px;font-size:12px;font-weight:700;color:var(--gold-dark);letter-spacing:.5px}
+.about-stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.about-stat{background:var(--white);border-radius:14px;padding:16px;text-align:center;box-shadow:var(--shadow-sm)}
+.about-stat-num{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--gold)}
+.about-stat-lbl{font-size:10px;color:var(--text-light);margin-top:3px;line-height:1.4}
+.about-lead{font-size:15px;color:var(--text-light);line-height:1.85;margin-bottom:28px;font-weight:500}
+.about-why-list{display:flex;flex-direction:column;gap:18px;margin-bottom:28px}
+.about-why-item{display:flex;gap:14px;align-items:flex-start}
+.about-why-icon{width:42px;height:42px;min-width:42px;background:linear-gradient(135deg,var(--gold-light),var(--gold));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px}
+.about-why-item strong{display:block;font-size:13px;font-weight:700;color:var(--charcoal);margin-bottom:3px}
+.about-why-item span{font-size:12px;color:var(--text-light);line-height:1.65}
+
+/* ── MOBILE CALL BTN ── */
+.mobile-call-btn{display:none}
+
 /* ── RESPONSIVE ── */
 @media(max-width:1024px){
+  .about-grid{grid-template-columns:1fr}
   .lm-grid{grid-template-columns:1fr}
   .hero-content{grid-template-columns:1fr;padding:120px 40px 70px}
   .hero-visual{display:none}
@@ -354,6 +375,7 @@ textarea.dark-input{resize:none;min-height:88px;line-height:1.6}
   .time-grid{grid-template-columns:repeat(3,1fr)}
   .pricing-grid{grid-template-columns:1fr}
   .ba-stats{grid-template-columns:1fr 1fr}
+  .mobile-call-btn{display:flex;align-items:center;gap:8px;position:fixed;bottom:22px;right:22px;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:var(--white);text-decoration:none;padding:14px 22px;border-radius:50px;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;z-index:9997;box-shadow:0 8px 28px rgba(201,169,110,.5);letter-spacing:.4px;white-space:nowrap}
 }
 </style>
 </head>
@@ -364,7 +386,7 @@ textarea.dark-input{resize:none;min-height:88px;line-height:1.6}
   <a class="nav-logo" href="#">LUX</a>
   <ul class="nav-links">
     <li><a href="#quiz">Підбір програми</a></li>
-    <li><a href="#results">До/після</a></li>
+    <li><a href="#results">Про нас</a></li>
     <li><a href="#team">Команда</a></li>
     <li><a href="#services">Послуги</a></li>
     <li><a href="#pricing">Ціни</a></li>
@@ -509,109 +531,74 @@ textarea.dark-input{resize:none;min-height:88px;line-height:1.6}
   </div>
 </section>
 
-<!-- ③ BEFORE / AFTER -->
-<section class="ba-section" id="results">
+<!-- ③ ПРО НАС -->
+<section class="about-section" id="results">
   <div class="container">
-    <div class="ba-head fade-up">
-      <span class="sec-tag">✦ Реальні результати</span>
-      <h2 class="sec-title">Результати, що говорять<br><em style="font-style:italic">самі за себе</em></h2>
-      <p class="sec-sub" style="margin:0 auto">Справжні фото наших клієнток після курсу. Без фільтрів, без фотошопу.</p>
-    </div>
-    <div class="ba-tabs">
-      <button class="ba-tab active" onclick="switchTab(0,this)">LPG-масаж</button>
-      <button class="ba-tab" onclick="switchTab(1,this)">Кавітація</button>
-      <button class="ba-tab" onclick="switchTab(2,this)">Вакуумний масаж</button>
-    </div>
-    <div class="ba-wrap fade-up">
-      <div class="ba-slider" id="baSlider">
-        <div class="ba-before">
-          <div class="ba-before-bg">
-            <img src="assets/допісля1.jpg" alt="До процедури">
-          </div>
-          <div class="ba-lbl">ДО</div>
-        </div>
-        <div class="ba-after" id="baAfter">
-          <div class="ba-after-bg">
-            <img src="assets/допісля2.jpg" alt="Після процедури">
-          </div>
-          <div class="ba-lbl" style="right:18px;left:auto">ПІСЛЯ</div>
-        </div>
-        <div class="ba-divider" id="baDivider">
-          <div class="ba-handle">⬌</div>
-        </div>
-      </div>
-    </div>
-    <div class="ba-stats fade-up">
-      <div class="ba-stat"><div class="ba-stat-num">-8 см</div><div class="ba-stat-lbl">В об'ємі талії після 10 сеансів</div></div>
-      <div class="ba-stat"><div class="ba-stat-num">-4 кг</div><div class="ba-stat-lbl">Середнє схуднення за курс</div></div>
-      <div class="ba-stat"><div class="ba-stat-num">1 сеанс</div><div class="ba-stat-lbl">Видимий результат уже після першого</div></div>
-      <div class="ba-stat"><div class="ba-stat-num">97%</div><div class="ba-stat-lbl">Клієнток задоволені результатом</div></div>
-    </div>
-  </div>
-</section>
+    <div class="about-grid">
 
-<!-- ④ TEAM -->
-<section class="team-section" id="team">
-  <div class="container">
-    <div class="team-head fade-up">
-      <span class="sec-tag">✦ Наша команда</span>
-      <h2 class="sec-title">Довіра та <em style="font-style:italic">безпека</em></h2>
-      <p class="sec-sub" style="margin:0 auto">Кожен фахівець — сертифікований профі з профільною медичною або косметологічною освітою</p>
-    </div>
-    <div class="team-grid">
-
-      <div class="team-card fade-up">
-        <div class="team-photo">
-          <img src="assets/команда1.jpg" alt="Олена Коваль">
-          <span class="cert-badge">✦ Сертифікований фахівець</span>
-          <button class="vid-btn" onclick="openVideo('Олена Коваль')">▶</button>
+      <div class="about-photo-col fade-up">
+        <div class="about-photo-wrap">
+          <img src="assets/фото1.jpg" alt="LUX Body Studio — преміум студія в Києві">
+          <div class="about-photo-badge">✦ 7 років · Київ</div>
         </div>
-        <div class="team-info">
-          <div class="team-name">Олена Коваль</div>
-          <div class="team-role">Косметолог-естетист · LPG-терапевт</div>
-          <div class="team-bio">9 років досвіду в апаратній косметології. Спеціалізація: LPG Endermologie та ліфтинг. Проходила навчання в Endermologie Academy (Париж).</div>
-          <div class="team-tags">
-            <span class="t-tag">LPG Level III</span>
-            <span class="t-tag">KAMS Certified</span>
-            <span class="t-tag">CIDESCO</span>
+        <div class="about-stats-row">
+          <div class="about-stat">
+            <div class="about-stat-num">1 200+</div>
+            <div class="about-stat-lbl">задоволених клієнток</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-num">98%</div>
+            <div class="about-stat-lbl">повертаються знову</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-num">TOP‑3</div>
+            <div class="about-stat-lbl">рейтинг Київ 2024</div>
           </div>
         </div>
       </div>
 
-      <div class="team-card fade-up">
-        <div class="team-photo">
-          <img src="assets/команда8.jpg" alt="Вікторія Мороз">
-          <span class="cert-badge">✦ Медична освіта</span>
-          <button class="vid-btn" onclick="openVideo('Вікторія Мороз')">▶</button>
-        </div>
-        <div class="team-info">
-          <div class="team-name">Вікторія Мороз</div>
-          <div class="team-role">Лікар-косметолог · Кавітація</div>
-          <div class="team-bio">Медик за освітою, 11 років у естетичній медицині. Авторські програми схуднення з доведеними результатами. Понад 3 000 сеансів кавітації.</div>
-          <div class="team-tags">
-            <span class="t-tag">Лікар-косметолог</span>
-            <span class="t-tag">Ультразвук</span>
-            <span class="t-tag">EU Certificate</span>
+      <div class="about-text-col fade-up">
+        <span class="sec-tag">✦ Про нас</span>
+        <h2 class="sec-title">Чому клієнтки<br><em style="font-style:italic">обирають LUX?</em></h2>
+        <p class="about-lead">7 років ми є першим вибором для тих, хто хоче реального результату — а не обіцянок. Ось що нас відрізняє від решти.</p>
+        <div class="about-why-list">
+          <div class="about-why-item">
+            <div class="about-why-icon">🏆</div>
+            <div>
+              <strong>Обладнання світового рівня</strong>
+              <span>Тільки сертифіковані апарати LPG Alliance та Zimmer — ті самі, що використовують у провідних клініках Парижа та Дубаї. Ми не економимо там, де це впливає на ваш результат.</span>
+            </div>
+          </div>
+          <div class="about-why-item">
+            <div class="about-why-icon">🎓</div>
+            <div>
+              <strong>Фахівці з медичною освітою</strong>
+              <span>Кожен майстер LUX — сертифікований спеціаліст з профільною медичною або косметологічною освітою. Ніякого «навчилась за відео» — тільки справжня кваліфікація.</span>
+            </div>
+          </div>
+          <div class="about-why-item">
+            <div class="about-why-icon">📋</div>
+            <div>
+              <strong>Індивідуальний протокол — не шаблон</strong>
+              <span>Перед кожним курсом — безкоштовна консультація та аналіз проблемних зон. Ваша програма складається особисто для вас: ваш тип тіла, ваш темп, ваш результат.</span>
+            </div>
+          </div>
+          <div class="about-why-item">
+            <div class="about-why-icon">⚡</div>
+            <div>
+              <strong>Результат вже після першого сеансу</strong>
+              <span>Ми не просимо чекати місяць «поки почне діяти». 94% клієнток фіксують видимий ефект після першого відвідування — мінус об'єми, легкість і сяюча шкіра.</span>
+            </div>
+          </div>
+          <div class="about-why-item">
+            <div class="about-why-icon">💎</div>
+            <div>
+              <strong>Комфорт та конфіденційність</strong>
+              <span>Приватні кабінети, тепла атмосфера, аромотерапія. Ви прийшли інвестувати в себе — і отримаєте не лише ефект, а й справжнє задоволення від кожного відвідування.</span>
+            </div>
           </div>
         </div>
-      </div>
-
-      <div class="team-card fade-up">
-        <div class="team-photo">
-          <img src="assets/команда9.jpg" alt="Наталя Лисенко">
-          <span class="cert-badge">✦ Майстер вищої категорії</span>
-          <button class="vid-btn" onclick="openVideo('Наталя Лисенко')">▶</button>
-        </div>
-        <div class="team-info">
-          <div class="team-name">Наталя Лисенко</div>
-          <div class="team-role">Масажист · Вакуумна терапія</div>
-          <div class="team-bio">Майстер масажу вищої категорії. 8 років практики, спеціалізація на антицелюлітних та лімфодренажних техніках. Постійне підвищення кваліфікації.</div>
-          <div class="team-tags">
-            <span class="t-tag">Масажист В.К.</span>
-            <span class="t-tag">Лімфодренаж</span>
-            <span class="t-tag">Вакуум-RF</span>
-          </div>
-        </div>
+        <a href="#booking" class="btn-primary" style="display:inline-flex">📅 Записатися на консультацію</a>
       </div>
 
     </div>
@@ -699,6 +686,74 @@ textarea.dark-input{resize:none;min-height:88px;line-height:1.6}
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ④ TEAM -->
+<section class="team-section" id="team">
+  <div class="container">
+    <div class="team-head fade-up">
+      <span class="sec-tag">✦ Наша команда</span>
+      <h2 class="sec-title">Довіра та <em style="font-style:italic">безпека</em></h2>
+      <p class="sec-sub" style="margin:0 auto">Кожен фахівець — сертифікований профі з профільною медичною або косметологічною освітою</p>
+    </div>
+    <div class="team-grid">
+
+      <div class="team-card fade-up">
+        <div class="team-photo">
+          <img src="assets/команда1.jpg" alt="Олена Коваль">
+          <span class="cert-badge">✦ Сертифікований фахівець</span>
+          <button class="vid-btn" onclick="openVideo('Олена Коваль')">▶</button>
+        </div>
+        <div class="team-info">
+          <div class="team-name">Олена Коваль</div>
+          <div class="team-role">Косметолог-естетист · LPG-терапевт</div>
+          <div class="team-bio">9 років досвіду в апаратній косметології. Спеціалізація: LPG Endermologie та ліфтинг. Проходила навчання в Endermologie Academy (Париж).</div>
+          <div class="team-tags">
+            <span class="t-tag">LPG Level III</span>
+            <span class="t-tag">KAMS Certified</span>
+            <span class="t-tag">CIDESCO</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card fade-up">
+        <div class="team-photo">
+          <img src="assets/команда8.jpg" alt="Вікторія Мороз">
+          <span class="cert-badge">✦ Медична освіта</span>
+          <button class="vid-btn" onclick="openVideo('Вікторія Мороз')">▶</button>
+        </div>
+        <div class="team-info">
+          <div class="team-name">Вікторія Мороз</div>
+          <div class="team-role">Лікар-косметолог · Кавітація</div>
+          <div class="team-bio">Медик за освітою, 11 років у естетичній медицині. Авторські програми схуднення з доведеними результатами. Понад 3 000 сеансів кавітації.</div>
+          <div class="team-tags">
+            <span class="t-tag">Лікар-косметолог</span>
+            <span class="t-tag">Ультразвук</span>
+            <span class="t-tag">EU Certificate</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card fade-up">
+        <div class="team-photo">
+          <img src="assets/команда9.jpg" alt="Наталя Лисенко">
+          <span class="cert-badge">✦ Майстер вищої категорії</span>
+          <button class="vid-btn" onclick="openVideo('Наталя Лисенко')">▶</button>
+        </div>
+        <div class="team-info">
+          <div class="team-name">Наталя Лисенко</div>
+          <div class="team-role">Масажист · Вакуумна терапія</div>
+          <div class="team-bio">Майстер масажу вищої категорії. 8 років практики, спеціалізація на антицелюлітних та лімфодренажних техніках. Постійне підвищення кваліфікації.</div>
+          <div class="team-tags">
+            <span class="t-tag">Масажист В.К.</span>
+            <span class="t-tag">Лімфодренаж</span>
+            <span class="t-tag">Вакуум-RF</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1029,6 +1084,9 @@ textarea.dark-input{resize:none;min-height:88px;line-height:1.6}
     </div>
   </div>
 </div>
+
+<!-- MOBILE CALL BUTTON -->
+<a class="mobile-call-btn" href="tel:+380671234567">📞 Зателефонувати</a>
 
 <!-- FLOAT ASK -->
 <button class="ask-float" onclick="openAskModal()">💬 Задати питання</button>
